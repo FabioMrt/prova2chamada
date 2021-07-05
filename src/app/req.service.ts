@@ -10,8 +10,10 @@ export class ReqService {
 
   readonly baseUrl = "https://calm-anchorage-20290.herokuapp.com/api/v1/"
 
-  getNotifications() {
-    return this.http.get(`${this.baseUrl}notifications`)
+  getNotifications(type, parametro) {
+    let url = `${this.baseUrl}notifications?${type}=${parametro}`
+    console.log(url)
+    return this.http.get(url)
   }
 
   deleteNotifications(id) {

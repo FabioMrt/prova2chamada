@@ -12,6 +12,9 @@ export class AppComponent {
 
   constructor(private service: ReqService, private fb: FormBuilder) { }
 
+  type = "status"
+  parametro = ""
+
   datas = []
   formulario = this.fb.group({
     content: [''],
@@ -24,7 +27,9 @@ export class AppComponent {
   }
 
   getNotifications() {
-    this.service.getNotifications().subscribe((res: any) => {
+    console.log(this.type)
+    console.log(this.parametro)
+    this.service.getNotifications(this.type, this.parametro).subscribe((res: any) => {
       console.log(res)
       this.datas = res
     })

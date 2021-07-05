@@ -1,4 +1,5 @@
 <div class="container">
+
   <form [formGroup]="formulario" (ngSubmit)="newNotifications()">
     <div class="form-group">
       <label for="content">content</label>
@@ -19,18 +20,49 @@
     <input type="submit" class="forsubmit" value="Enviar">
   </form>
 
-  <div class="row" *ngFor="let data of datas">
-    <div class="col-md-3">
-      {{data.status}}
+  <hr>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="type">type</label>
+        <select [(ngModel)]="type" class="form-select">
+          <option value="status">status</option>
+          <option value="subject">subject</option>
+          <option value="name">name</option>
+        </select>
+      </div>
     </div>
-    <div class="col-md-3">
-      {{data.subject}}
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="parametro">parametro</label>
+        <input type="text" class="form-control" [(ngModel)]="parametro">
+      </div>
     </div>
-    <div class="col-md-3">
-      {{data.name}}
-    </div>
-    <div class="col-md-3">
-      <button (click)="deleteNotifications(data.id)">Apagar</button>
+    <div class="col-md-4">
+      <button (click)="getNotifications()">buscar</button>
     </div>
   </div>
+
+  <hr>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">status</th>
+        <th scope="col">subject</th>
+        <th scope="col">name</th>
+        <th scope="col">actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of datas">
+        <td>{{data.status}}</td>
+        <td>{{data.subject}}</td>
+        <td>{{data.name}}</td>
+        <td><button (click)="deleteNotifications(data.id)">Apagar</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  
 </div>
