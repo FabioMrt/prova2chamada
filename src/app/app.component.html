@@ -1,0 +1,36 @@
+<div class="container">
+  <form [formGroup]="formulario" (ngSubmit)="newNotifications()">
+    <div class="form-group">
+      <label for="content">content</label>
+      <input type="text" class="form-control" formControlName="content" placeholder="content">
+    </div>
+    <div class="form-group">
+      <label for="subject">subject</label>
+      <input type="text" class="form-control" formControlName="subject" placeholder="subject">
+    </div>
+    <div class="form-group">
+      <label for="name">name</label>
+      <input type="text" class="form-control" formControlName="name" placeholder="name">
+    </div>
+    <div class="form-group">
+      <label for="status">status</label>
+      <input type="text" class="form-control" formControlName="status" placeholder="status">
+    </div>
+    <input type="submit" class="forsubmit" value="Enviar">
+  </form>
+
+  <div class="row" *ngFor="let data of datas">
+    <div class="col-md-3">
+      {{data.status}}
+    </div>
+    <div class="col-md-3">
+      {{data.subject}}
+    </div>
+    <div class="col-md-3">
+      {{data.name}}
+    </div>
+    <div class="col-md-3">
+      <button (click)="deleteNotifications(data.id)">Apagar</button>
+    </div>
+  </div>
+</div>
